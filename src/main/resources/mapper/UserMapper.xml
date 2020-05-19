@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.swjd.dao.UserDao">
+    <select id="list" resultType="com.swjd.bean.User">
+        SELECT * from user;
+    </select>
+    <select id="selectById" resultType="com.swjd.bean.User">
+        SELECT * from user where id=#{id}
+
+    </select>
+
+    <select id="selectByName" resultType="com.swjd.bean.User">
+        SELECT * from user where stuName like "%"#{stuName}"%";
+    </select>
+
+    <delete id="del" parameterType="java.lang.Integer">
+        delete from user where id=#{id}
+    </delete>
+
+    <insert id="add" parameterType="com.swjd.bean.User">
+        insert user(stuName,stuAge) values (#{stuName},#{stuAge})
+    </insert>
+
+    <update id="update" parameterType="com.swjd.bean.User">
+        update user set stuName=#{stuName} , stuAge=#{stuAge} where id=#{id}
+    </update>
+</mapper>
